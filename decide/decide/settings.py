@@ -68,7 +68,7 @@ MODULES = [
     'voting',
 ]
 
-BASEURL = 'http://localhost:8000'
+BASEURL = 'https://decide-europa-cabina.herokuapp.com'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -160,3 +160,7 @@ except ImportError:
 
 
 INSTALLED_APPS = INSTALLED_APPS + MODULES
+API = {}
+
+import django_heroku
+django_heroku.settings(locals())
