@@ -26,7 +26,7 @@ Si queremos ver todas las ramas, incluso las ocultas:
 
 De esta forma estará disponible para que otros puedan acceder a ella
 
-`$ git branch origin NOMBRE_RAMA`
+`$ git push origin NOMBRE_RAMA`
 
 Una vez esté subida si hacemos `$ git branch -a` nos aparecerá la rama oculta remotes/origin/NOMBRE_RAMA.
 
@@ -48,6 +48,14 @@ Y ponemos el siguiente comando:
 
 Ponemos el flag no-ff para que exista un commit que indique que se ha realizado el merge.
 
-### Borrar una rama
+### Borrar una rama en el servidor
 
 `$ git push origin :NOMBRE_RAMA`
+
+### Borrar rama en local
+
+`$ git branch -d NOMBRE_RAMA`
+
+### Actualizar rama con los cambios subidos en el master
+
+`$ git pull origin master --rebase`

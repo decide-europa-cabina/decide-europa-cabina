@@ -35,7 +35,13 @@ Explicaremos este proceso mediante un ejemplo: hemos encontrado un fallo a la ho
 	3. **TYPO**: faltas de ortografía en la redacción en cualquiera de los textos del software.
 	4. **SECURITY FAILURE**: aquel fallo que nos permite acceder a zonas restringuidas o realizar acciones limitadas sin los permisos necesarios.
 
-> En nuestro caso le añadiremos la etiqueta **LOGIC ERROR**.
+	> En nuestro caso le añadiremos la etiqueta **LOGIC ERROR**.
+	
+5. En caso de que sea un cambio en la vista, se deberá escribir de la forma más detallada posible un *check list* que reuna una serie de premisas que debe cumplir el cambio. Por ejemplo, si la *issue* trata de un cambio en la validación del formulario para iniciar sesión, el *check list* deberá ser algo así:
+
+	> [ ] Cuando se introduzca un usuario y contraseña incorrecto deberá una notificación.
+	>
+	> [ ] El nombre de usuario debe tener una longitud mayor de tres caracteres.
 
 ## Incremento
 
@@ -57,13 +63,13 @@ Una vez reportada la incidencia, si esta fue reportada por un miembro externo al
 	3. **MEDIUM**: incidencia con cierta urgencia sin que esta sea bloqueante.
 	4. **LOW**: no existe ninguna prisa para resolver la incidencia dado que es irrelevante.
 2. Añadir otra etiqueta en la que se indique el estado de la misma: 
-	1. **INVALID**: la incidencia abierta no cumple con el comitido del equipo de cabina de decide-europa.
+	1. **INVALID**: la incidencia abierta no cumple con el cometido del equipo de cabina de decide-europa.
 	2. **DENIED**: el equipo no va a proceder a realizar esa incidencia.
 	3. **ACCEPTED**: la incidencia tiene toda la información necesaria.
 	4. **DUPLICATED**: la incidencia ya ha sido reportada/propuesta.
 	5. **IN PROGRESS**: la resolución de la incidencia está en progreso.
 	6. **COMPLETE**: la incidencia ha sido resuelta de forma exitosa.
-3. Asignar la incidencia a uno de los miembros del equipo de decide-europa-cabina en el apartado *Assignees*.
+3. Asignar la incidencia a, como mínimo, dos personas de los miembros del equipo de decide-europa-cabina en el apartado *Assignees*.
 4. En caso de que el proceso para resolver la incidencia no se realice de forma inmediata se puede asignar dicha incidencia a un **milestone** concreto.
 
 **Además, el coordinador deberá controlar que las personas encargadas de resolver las incidencias hagan el trabajo.**
@@ -73,10 +79,17 @@ Si la **incidencia** reportada está ya **duplicada**, se pondrá un **comentari
 
 En caso de que la incidencia haya sido descrita por un miembro externo y **no aporte la información suficiente**, el coordinador podrá decidir **rechazarla** y cerrarla o **pedir más información** al usuario a través del sistema de comentarios.
 
+### Anotaciones
+
+En caso de que la incidencia sea añadida por un miembro del equipo no tendrá por qué necesariamente esperar al coordinador para añadir las etiquetas. Esto se hará así para aumentar la velocidad del proceso de gestión de incidencias en caso de que no sea necesaria una intervención directa del coordinador. Estos casos serán cuando sea un fallo breve que deba quedar reflejado como *issue* pero no necesite un largo proceso de cambio o cuando sea un fallo crítico que requiera una actuación inmedieta, o en el caso de un incremento que sea algo que el miembro del equipo vaya a ser sin necesidad de que el coordinador de las *issues* le esté indicando las etiquetas.
+
+En caso de realizarse un incremento, el coordinador de las *issues* deberá asignarle, como mínimo, a dos personas la revisión de dicho incremento. Estas personas encargadas deberán comprobar que el incremento cumpla con cada una de las funciones que describe la *issue* y además que no cree ningún otro conflico, esto es, ejecutando las pruebas unitarias del proyecto.
+
 ## Proceso de actuación para el encargado de resolver la *issue*
 
 1.  La persona encargada de resolver la incidencia, primero deberá cambiar la etiqueta de **ACCEPTED** a **IN PROGRESS**, si no lo está todavía, de esta forma no habrá dos personas trabajando en una misma incidencia.
 2. Cuando la incidencia esté arreglada, se subirá la solución al repositorio en la rama correspondiente descrito en el documento de estrategia de gestión de ramas.
-3. Si la incidencia fue creada por un miembro externo, se mencionara a este miembro para que compruebe si realmente el cambio realizado cumple con lo esperado. Si el usuario no reporta ningún otro fallo y está de acuerdo con la solución ofrecida, el encargado procederá a cerrar la incidencia y a cambiar la etiqueta a **COMPLETE**.
+3. hj
+4. Si la incidencia fue creada por un miembro externo, se mencionara a este miembro para que compruebe si realmente el cambio realizado cumple con lo esperado. Si el usuario no reporta ningún otro fallo y está de acuerdo con la solución ofrecida, el encargado procederá a cerrar la incidencia y a cambiar la etiqueta a **COMPLETE**.
 
 **Toda incidencia creada por un miembro externo y resuelta por un encargado, si no recibe una nueva respuesta por parte del usuario en un plazo de 10 días, será cerrada.**
