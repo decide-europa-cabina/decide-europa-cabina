@@ -51,6 +51,21 @@ Un incremento es toda aquella petición de cambio que no viene derivado de un fa
 2. Poner un título descriptivo.
 3. Realizar una descripción lo más detallada posible del incremento. En caso de no disponer de toda la información disponible en el momento de abrir la *issue* se deberá escribir en los **comentarios** de la misma los detalles del cambio conforme se vayan sabiendo.
 
+## Proceso de actuación ante una incidencia para un miembro de decide-europa-cabina
+
+**A partir de ahora cuando hablemos de incidencia nos referiremos también a un incremento.**
+
+Un miembro de decide-europa-cabina puede reportar y solucionar él mismo una incidencia sin necesidad de actuación del *coordinador de issues*, Alejandro Santos Montaño, esta figura solo aparecerá cuando comience el proceso de revisión. A los pasos anteriormente descritos en los apartados **Incidencia** e **Incremento**, se añaden:
+
+1. Determinar la prioridad que tendrá la incidencia (las etiquetas son explicadas en el siguiente apartado)
+2. Añadir otra etiqueta en la que se indique el estado de la misma (explicadas en el siguiente apartado)
+3. Se arreglará el fallo, siempre teniendo en cuenta el procedimiento descrito en los documentos *Estrategia de ramas* y *Política de commits*.
+4. Una vez arreglado el fallo se añadirá un comentario avisando al coordinador para que este asigne a dos personas que se encargan de revisar, esto será, por supuesto, en caso de que no estén ya asignadas. En cualquier caso, el coordinador añadirá un comentario donde mencione (utilizando @) a los dos revisores, siguiendo el siguiente formato:
+
+	> Los revisores de esta incidencia serán @usuario1 y @usuario2 
+
+5. En caso de que los revisores encuentren problemas será arreglado por el encargado de la incidencia y en caso de que todo esté correcto procederá esta persona a realizar un *merge* desde la rama donde se realizaron los cambios a la *master*.
+
 ## Proceso de actuación para el coordinador de *issue* de decide-europa-cabina
 
 **A partir de ahora cuando hablemos de incidencia nos referiremos también a un incremento.**
@@ -69,27 +84,70 @@ Una vez reportada la incidencia, si esta fue reportada por un miembro externo al
 	4. **DUPLICATED**: la incidencia ya ha sido reportada/propuesta.
 	5. **IN PROGRESS**: la resolución de la incidencia está en progreso.
 	6. **COMPLETE**: la incidencia ha sido resuelta de forma exitosa.
-3. Asignar la incidencia a, como mínimo, dos personas de los miembros del equipo de decide-europa-cabina en el apartado *Assignees*.
-4. En caso de que el proceso para resolver la incidencia no se realice de forma inmediata se puede asignar dicha incidencia a un **milestone** concreto.
+3. Asignar la incidencia en el apartado *Assignees* a una persona encargada de arreglarla y otras dos personas para el proceso de revisión. El coordinador añadirá un comentario donde mencione (utilizando @) a los dos revisores, siguiendo el siguiente formato:
 
-**Además, el coordinador deberá controlar que las personas encargadas de resolver las incidencias hagan el trabajo.**
+	> Los revisores de esta incidencia serán @usuario1 y @usuario2 
+	
+4. Si el encargado de resolver una *issue* le solicita que le asigne revisores a su *issue*, porque aún no los tiene, el coordinador deberá añadir las personas que crea disponibles y capacitadas para llevar a cabo la revisión.
+	
+5. En caso de que el proceso para resolver la incidencia no se realice de forma inmediata se puede asignar dicha incidencia a un **milestone** concreto.
+
+**Además, el coordinador deberá controlar que la persona encargada de resolver las incidencias y de revisarla hagan el trabajo.**
 
 ### Posibles problemas
-Si la **incidencia** reportada está ya **duplicada**, se pondrá un **comentario** donde se **referencie** a la **incidencia original** y se **cerrará la duplicada**. 
+Si la **incidencia** reportada está ya **duplicada**, el coordinador pondrá un **comentario** donde se **referencie** a la **incidencia original** y se **cerrará la duplicada**. 
 
-En caso de que la incidencia haya sido descrita por un miembro externo y **no aporte la información suficiente**, el coordinador podrá decidir **rechazarla** y cerrarla o **pedir más información** al usuario a través del sistema de comentarios.
+En caso de que la incidencia haya sido descrita por un miembro externo y **no aporte la información suficiente**, el coordinador o el encargado de resolverla podrá decidir **rechazarla** y cerrarla o **pedir más información** al usuario a través del sistema de comentarios.
 
-### Anotaciones
+## Proceso de actuación de los revisores
 
-En caso de que la incidencia sea añadida por un miembro del equipo no tendrá por qué necesariamente esperar al coordinador para añadir las etiquetas. Esto se hará así para aumentar la velocidad del proceso de gestión de incidencias en caso de que no sea necesaria una intervención directa del coordinador. Estos casos serán cuando sea un fallo breve que deba quedar reflejado como *issue* pero no necesite un largo proceso de cambio o cuando sea un fallo crítico que requiera una actuación inmedieta, o en el caso de un incremento que sea algo que el miembro del equipo vaya a ser sin necesidad de que el coordinador de las *issues* le esté indicando las etiquetas.
+Un revisor será el encargado de comprobar las siguientes cosas:
 
-En caso de realizarse un incremento, el coordinador de las *issues* deberá asignarle, como mínimo, a dos personas la revisión de dicho incremento. Estas personas encargadas deberán comprobar que el incremento cumpla con cada una de las funciones que describe la *issue* y además que no cree ningún otro conflico, esto es, ejecutando las pruebas unitarias del proyecto.
+1. **Que esté completo**: se considerará completo cuando estén implementados todos los cambios que se reflejen en la *issue* asociado a la rama.
+2. **Que sea estable**: se considerará estable cuando tengan al menos tres pruebas unitarias que corroboren que lo realizado no produzca ningún fallo o bien que cumpla el *checklist* que aparece en la *issue*. Esto será así solamente en los cambios que tengan sentido, dado que un cambio de documentación o visual no tiene esa necesidad.
+
+El procedimiento de revisión será el siguiente:
+
+1. El revisor utilizando los comandos descritos en el documento *Trabajando con ramas* se descargará la rama con los cambios.
+2. Realizará distintas pruebas para asegurar la integridad del sistema mediante la ejecución de las pruebas unitarias y realizando de forma manual comprobaciones usando la interfaz de la web.
+3. En caso de que el encargado del cambio haya realizado las pruebas unitarias se revisarán y ejecutarán, si se ha realizado un *checklist* se comprobará cada punto del mismo.
+4. Si surgen dudas sobre la implementación se puede preguntar al encargado utilizando los comentarios de *issue*.
+5. Si se observan fallos, el revisor puede considerar que es un fallo en el que merece la pena se puede crear una *issue* hija como se describe en el apartado "*Issues* anidadas" en la que prosiga la discusión sobre ese fallo en concreto. En caso contrario, puede reportar los fallos en los comentarios de la *issue* tratando siempre de ser lo más detallado posible.
+6. En caso de no observar ningún tipo de fallo se añadirá un comentario especificando que todo está correcto por parte del revisor.
+
+## *Issues* anidadas
+
+Durante el proceso de realización de incrementos significativos (desarrollo de un módulo de votación con gran carga lógica) o durante el proceso de revisión se pueden crear *issues* derivadas de la *issie* principal. En ambos casos se pondrá un comentario en la *issue* padre en el que diga:
+
+>Se tratará el siguiente problema ****describe el problema en lineas muy generales**** en la issue #ID\_ISSUE_HIJA
+
+Dos ejemplos:
+
+### *Issues* derivadas del proceso de revisión
+
+En caso de que a raiz del proceso de revisión del cambio en una *issue* se observen otros fallos, el revisor puede considerar si la magnitud del fallo (porque pueda producir muchos comentarios y no tiene una estricta relación con la *issue* que se está tratando) merece la pena abrir una nueva *issue* derivada de la que está revisando. Esto se realizará con el objetivo de no emborronar los comentarios de una *issue* que debe mantenerse legible.
+
+En la *issue* hija creada por el revisor se asignará en el apartado *Asignees* al encargado de resolver la *issue* padre y a él mismo y deberá seguir los pasos indicados en el apartado **Incidencias** de este documento.
+
+### Grandes *issues*
+
+El programador Juan Molina tiene una *issue* donde está programando un framework JavaScript para manejar el front-end de la aplicación. Dado que es una incidencia que conllevará cierta cantidad de commits, se pueden crear *issues* hijas que referencien a la padre en las cuales se realicen ciertos cambios de importantes.
+
+Por ejemplo Juan, podría tener su *issue*: 
+> Crear framework para el front-end de la web
+
+Y sus hijas: 
+> Enrutador del framework
+> 
+> Uso de plantillas
 
 ## Proceso de actuación para el encargado de resolver la *issue*
 
-1.  La persona encargada de resolver la incidencia, primero deberá cambiar la etiqueta de **ACCEPTED** a **IN PROGRESS**, si no lo está todavía, de esta forma no habrá dos personas trabajando en una misma incidencia.
-2. Cuando la incidencia esté arreglada, se subirá la solución al repositorio en la rama correspondiente descrito en el documento de estrategia de gestión de ramas.
-3. hj
-4. Si la incidencia fue creada por un miembro externo, se mencionara a este miembro para que compruebe si realmente el cambio realizado cumple con lo esperado. Si el usuario no reporta ningún otro fallo y está de acuerdo con la solución ofrecida, el encargado procederá a cerrar la incidencia y a cambiar la etiqueta a **COMPLETE**.
+1.  La persona encargada de resolver la incidencia, primero deberá cambiar la etiqueta de **ACCEPTED** a **IN PROGRESS**, si no lo está todavía.
+2. Cuando la incidencia esté arreglada, se subirá la solución al repositorio en la rama correspondiente descrito en el documento *Estrategia de gestión de ramas*.
+3. Una vez con todo listo se avisará a los revisores mencionandolos en un comentario o se avisará al coordinador (usando los comentarios) para que los asigne si aún no lo están, indicando que esta *issue* está lista para el proceso de revisión.
+4. Durante el proceso de revisión, cada vez que los revisores mencionen un fallo que debas cambiar, al subir ese cambio deberás avisarlos diciendo que ya está arreglado el fallo que menciona @revisor1.
+5. Una vez completado el proceso de revisión, si la incidencia fue creada por un miembro externo, se mencionara a este miembro para que compruebe si realmente el cambio realizado cumple con lo esperado. Si el usuario no reporta ningún otro fallo y está de acuerdo con la solución ofrecida, el encargado procederá a cerrar la incidencia, cambiar la etiqueta a **COMPLETE** y a realizar un *merge* al *master*.
+
 
 **Toda incidencia creada por un miembro externo y resuelta por un encargado, si no recibe una nueva respuesta por parte del usuario en un plazo de 10 días, será cerrada.**
