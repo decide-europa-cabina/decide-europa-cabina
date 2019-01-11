@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">DecideCabina</string>
     <string name="action_settings">Settings</string>
+    <string name="cargando">Cargando</string>
+    <string name="internet">Hay problemas con internet</string>
+    <string name="noEventos">No hay votaciones</string>
 </resources>

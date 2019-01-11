@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:background="@drawable/tarjeta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+        <!--FechaInicioFin-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/fechaydia"
+            android:layout_marginBottom="5dp"
+            android:layout_alignParentTop="true">
+
+            <ImageView
+                android:id="@+id/fechaimgInicio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/calendar"
+                android:layout_toLeftOf="@id/fechaInicio"
+                 />
+
+            <TextView
+
+                android:id="@+id/fechaInicio"
+
+                android:textStyle="bold"
+                android:layout_alignParentTop="true"
+                android:paddingLeft="10dp"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#9E9E9E"
+                android:textSize="16dp"
+                android:layout_toLeftOf="@id/fechaimgFin"
+                ></TextView>
+
+
+            <ImageView
+                android:id="@+id/fechaimgFin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/calendar"
+                android:layout_marginLeft="10dp"
+                android:layout_toLeftOf="@id/fechaFin" />
+
+            <TextView
+                android:id="@+id/fechaFin"
+                android:textStyle="bold"
+                android:layout_alignParentRight="true"
+                android:paddingLeft="10dp"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:paddingRight="10dp"
+                android:textColor="#9E9E9E"
+                android:textSize="16dp"
+                ></TextView>
+        </RelativeLayout>
+        <!--FIN FechaInicioFin-->
+
+        <!--Descripción-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_height="wrap_content"
+                android:textColor="#9E9E9E"
+                android:textSize="18dp"
+                android:layout_alignParentTop="true">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/descripcion"
+                android:layout_width="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_height="wrap_content"
+                android:textColor="#9E9E9E"
+                android:textSize="16dp"
+                android:layout_alignParentTop="true">
+
+            </TextView>
+
+
+        </LinearLayout>
+        <!--FIN Descripcion-->
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
