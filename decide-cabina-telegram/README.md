@@ -1,27 +1,44 @@
-# Interfaz para la votaci贸n de Decide en Telegram.
+# Interfaz para la votaci髇 de Decide en Telegram
 
 Bot creado por el grupo 15 de EGC.
 
-Ruta del bot: https://t.me/decide_europa_cabina_bot
+`Ruta del bot` : <https://t.me/decide_europa_cabina_bot>
 
 ### Requisitos
 Si tiene instalado pip3:
+
 ```pip3 install python-telegram-bot```
+
 Si tiene problemas con el comando anterior:
+
 ```python3 -m pip install python-telegram-bot```
+
 Si no tiene instalado pip3:
+
 ```sudo apt update && sudo apt install python3-pip -y```
 
-### Inicializaci贸n
+### Inicializaci髇
 Para iniciar el bot:
 ```sh
 $ cd decide-cabina-telegram
-$ python decide_bot.py
+$ python3 decide_bot.py
 ```
+### Personalizaci髇
+`BotFather`  : <https://telegram.me/botfather>
 
+Para la personalizaci髇 hemos hecho uso de BotFather, un bot creado por Telegram desde el que hacemos uso de la API para crear el bot, a馻dirle un nombre, una descripci髇, un icono, una secci髇 About y la barra r醦ida de comandos.
 
-### Comandos disponibles:
-- /start : Ventana de bienvenida con las opciones disponibles.
-- /help : Ayuda para el uso del bot.
-- /login - {usuario} {contrase帽a} : Iniciar sesi贸n.
-- /logout : Cerrar la sesi贸n actual.
+### Implementaci髇
+
+`Telegram Bot API` : <https://core.telegram.org/bots/api>
+
+Para la implementaci髇 hemos hecho uso de python-telegram-bot, una API que nos facilita la comunicaci髇 con el bot creado a trav閟 de la clave token generada y nos ofrece gran variedad de comandos diferentes.
+
+### Comandos disponibles
+- ```/start``` : Ventana de bienvenida con las opciones disponibles.
+- ```/help``` : Ayuda para el uso del bot.
+- ```/login``` - {usuario} {contrase馻} : Iniciar sesi髇.
+- ```/logout``` : Cerrar la sesi髇 actual.
+- ```voting``` - Muestra las votaciones disponibles.
+- ```question``` - {id_votaci髇} - Muestra las respuestas de la votaci髇.
+- ```vote``` - {id_respuesta} - Vota la respuesta elegida.
