@@ -50,6 +50,7 @@ Un incremento es toda aquella petición de cambio que no viene derivado de un fa
 1. Abrir una *issue*.
 2. Poner un título descriptivo.
 3. Realizar una descripción lo más detallada posible del incremento. En caso de no disponer de toda la información disponible en el momento de abrir la *issue* se deberá escribir en los **comentarios** de la misma los detalles del cambio conforme se vayan sabiendo.
+4. Añadir la etiqueta **INCREMENTAL**.
 
 ## Proceso de actuación ante una incidencia para un miembro de decide-europa-cabina
 
@@ -133,7 +134,7 @@ En la *issue* hija creada por el revisor se asignará en el apartado *Asignees* 
 
 ### Grandes *issues*
 
-El programador Juan Molina tiene una *issue* donde está programando un framework JavaScript para manejar el front-end de la aplicación. Dado que es una incidencia que conllevará cierta cantidad de commits, se pueden crear *issues* hijas que referencien a la padre en las cuales se realicen ciertos cambios de importantes.
+El programador Juan Molina tiene una *issue* donde está programando un framework JavaScript para manejar el front-end de la aplicación. Dado que es una incidencia que conllevará cierta cantidad de commits, se pueden crear *issues* hijas en las cuales se realicen ciertos cambios.
 
 Por ejemplo Juan, podría tener su *issue*: 
 > Crear framework para el front-end de la web
