@@ -39,6 +39,17 @@ Para la implementación hemos hecho uso de python-telegram-bot, una API que nos f
 - ```/help``` : Ayuda para el uso del bot.
 - ```/login``` - {usuario} {contraseña} : Iniciar sesión.
 - ```/logout``` : Cerrar la sesión actual.
-- ```voting``` - Muestra las votaciones disponibles.
-- ```question``` - {id_votación} - Muestra las respuestas de la votación.
-- ```vote``` - {id_respuesta} - Vota la respuesta elegida.
+- ```/voting``` - Muestra las votaciones disponibles.
+- ```/question``` - {id_votación} - Muestra las respuestas de la votación.
+- ```/vote``` - {id_respuesta} - Vota la respuesta elegida.
+
+### Cifrado ElGamal
+
+El bot esta implementado al completo a excepción del cifrado mediente ElGamal del mensaje de la opción elegida. Al completarse esta sección dentro del comando `/vote` la votación se completaría y aparecería el mensaje de confirmación.
+
+### Mantenimiento
+
+`Python Anywhere` : <https://www.pythonanywhere.com/>
+
+Existe la posibilidad de mantener el bot siempre conectado, alojando y ejecutando el `decide_bot.py` dentro de Python Anywhere u otros servicios similares.
+
