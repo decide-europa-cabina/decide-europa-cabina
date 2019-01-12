@@ -39,7 +39,7 @@ Explicaremos este proceso mediante un ejemplo: hemos encontrado un fallo a la ho
 	
 5. En caso de que sea un cambio en la vista, se deberá escribir de la forma más detallada posible un *check list* que reuna una serie de premisas que debe cumplir el cambio. Por ejemplo, si la *issue* trata de un cambio en la validación del formulario para iniciar sesión, el *check list* deberá ser algo así:
 
-	> [ ] Cuando se introduzca un usuario y contraseña incorrecto deberá una notificación.
+	> [ ] Cuando se introduzca un usuario y contraseña incorrecto deberá mostrar una notificación.
 	>
 	> [ ] El nombre de usuario debe tener una longitud mayor de tres caracteres.
 
@@ -114,6 +114,7 @@ El procedimiento de revisión será el siguiente:
 3. En caso de que el encargado del cambio haya realizado las pruebas unitarias se revisarán y ejecutarán, si se ha realizado un *checklist* se comprobará cada punto del mismo.
 4. Si surgen dudas sobre la implementación se puede preguntar al encargado utilizando los comentarios de *issue*.
 5. Si se observan fallos, el revisor puede considerar que es un fallo en el que merece la pena se puede crear una *issue* hija como se describe en el apartado "*Issues* anidadas" en la que prosiga la discusión sobre ese fallo en concreto. En caso contrario, puede reportar los fallos en los comentarios de la *issue* tratando siempre de ser lo más detallado posible.
+6. En caso de un incremento, si el encargado de realizarla ha realizado *issues* anidadas, el revisor también deberá comprobar las mismas sin necesidad de que se les asigne en la *issue* hija.
 6. En caso de no observar ningún tipo de fallo se añadirá un comentario especificando que todo está correcto por parte del revisor.
 
 ## *Issues* anidadas
@@ -124,7 +125,7 @@ Durante el proceso de realización de incrementos significativos (desarrollo de 
 
 **Cabe destacar que los cambios de esa *issue* anidada se pueden realizar en la rama de la *issue* padre sin necesidad de que crear una nueva rama**
 
-Dos ejemplos:
+Dos casos:
 
 ### *Issues* derivadas del proceso de revisión
 
@@ -144,12 +145,14 @@ Y sus hijas:
 > 
 > Uso de plantillas
 
+Los revisores de las *issues* de incremento que se deriven en otras *issues*, tal y como se explica en este apartado, deberán también revisar esas *issues* derivadas.
+
 ## Proceso de actuación para el encargado de resolver la *issue*
 
 1.  En caso de ser necesario, el encargado de resolver la *issue* puede requerir información al creador de la misma mencionándolo utilizando el @.
 2. La persona encargada de resolver la incidencia, primero deberá cambiar la etiqueta de **ACCEPTED** a **IN PROGRESS**, si no lo está todavía.
 3. Cuando la incidencia esté arreglada, se subirá la solución al repositorio en la rama correspondiente descrito en el documento *Estrategia de gestión de ramas*.
-4. Una vez con todo listo se avisará a los revisores mencionandolos en un comentario o se avisará al coordinador (usando los comentarios) para que los asigne si aún no lo están, indicando que esta *issue* está lista para el proceso de revisión.
+4. Cada vez que se quiera que los revisores comprueben algo se avisará a los mismos mencionandolos en un comentario o se avisará al coordinador (usando los comentarios) para que los asigne si aún no lo están, indicando que esta *issue* está lista para el proceso de revisión o la *issue* hija o cualquier parte que quieres que comprueben, también se puede especificar si no se quiere que comprueben algo o advertencias.
 5. Durante el proceso de revisión, cada vez que los revisores mencionen un fallo que debas cambiar, al subir ese cambio deberás avisarlos diciendo que ya está arreglado el fallo que menciona @revisor1.
 6. Una vez completado el proceso de revisión, si la incidencia fue creada por un miembro externo, se mencionara a este miembro para que compruebe si realmente el cambio realizado cumple con lo esperado. Si el usuario no reporta ningún otro fallo y está de acuerdo con la solución ofrecida, el encargado procederá a cerrar la incidencia, cambiar la etiqueta a **COMPLETE** y a realizar un *merge* al *master*.
 
