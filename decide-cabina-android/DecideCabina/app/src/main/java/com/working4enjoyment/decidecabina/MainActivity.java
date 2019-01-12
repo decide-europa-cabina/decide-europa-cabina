@@ -221,10 +221,13 @@ public class MainActivity extends AppCompatActivity {
             votings= Utility.serializeVoting(result);
 
             Log.d("Objeto", "Las votaciones son " + result);
-            if(getVotings().size()==0){
+            if(getVotings()!= null && getVotings().size()==0){
                 noVotings= true;
             }
-
+	    
+	    if(getVotings()==null){
+              	votings= new ArrayList<Voting>();
+	    }	
             //Asociamos el listview y el adapter
             creaListView(arrayAdapterGlobal, listViewGlobal);
 
