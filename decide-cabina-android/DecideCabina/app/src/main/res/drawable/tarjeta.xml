@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <!-- Bottom 2dp Shadow -->
+    <item>
+        <shape android:shape="rectangle" >
+
+            <solid android:color="#E0E0E0" /><!--#E0E0E0-->
+            <corners android:radius="0dp" />
+        </shape>
+    </item>
+
+    <!-- White Top color -->
+    <!--Cambiar el tamaño de la sombra-->
+    <item android:bottom="2px" android:left="1.5px" android:right="1.5px" android:top="1.5px">
+        <shape android:shape="rectangle" >
+            <!--Cambiar el color de la sombra-->
+            <solid android:color="#fff" />
+
+            <corners android:radius="0dp" />
+        </shape>
+    </item>
+
+</layer-list>
