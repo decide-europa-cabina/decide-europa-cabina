@@ -10,8 +10,11 @@ Nuestra motivación para crear ramas es por motivos **funcionales** dado que cre
 
 > **IMPORTANTE**: La incidencia descrita en esta imagen no supone un modelo, para futuras incidencia se deberá seguir el manual denominado: *Proceso de gestión de incidencias*.
 
-1. Crearemos un *branch* de nombre: **FALLO\_DISEÑO\_VOTACIÓN\_#2**. 
-2. Crearemos una rama en local y la subiremos al servidor según los pasos definidos en el documento *Trabajando con ramas* dentro de la carpeta doc del repositorio.
+1. Crearemos un *branch* de nombre: **FALLO\_DISEÑO\_VOTACIÓN\_#2** 
+2. Subimos la rama al repositorio (esto no se tiene por qué dar de forma inmediata, el encargado de resolver la *issue* decidirá cuando realizar este paso, siempre antes del proceso de revisión)
+3. Realizaremos los cambios necesarios en esta rama.
+
+Todo ello siguiendo los comandos definidos en el documento [Trabajando con ramas](https://github.com/decide-europa-cabina/decide-europa-cabina/wiki/Trabajar-con-ramas)
 
 ### Consideraciones a tener en cuenta
 
