@@ -29,11 +29,12 @@ script:
 addons:
   postgresql: '9.6'
 before_deploy:
-      # Set up git user name and tag this commit
-      - git config --local user.name "YOUR GIT USER NAME"
-      - git config --local user.email "YOUR GIT USER EMAIL"
+   if ! [[ $TRAVIS_TAG ]]; then
+      - git config --local user.name "Clebal"
+      - git config --local user.email "sergioclebal@gmail.com"
       - export TRAVIS_TAG="canary-$(date +'%d%m%Y-%H%M')"
       - git tag $TRAVIS_TAG
+   fi
 deploy:
   - provider: releases
     api_key: 
