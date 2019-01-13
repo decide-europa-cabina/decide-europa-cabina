@@ -4,4 +4,7 @@
     <string name="cargando">Cargando</string>
     <string name="internet">Hay problemas con internet</string>
     <string name="noEventos">No hay votaciones</string>
+    <string name="usuario">Usuario</string>
+    <string name="password">Contraseña</string>
+    <string name="enviar">Enviar</string>
 </resources>

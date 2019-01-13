@@ -1,24 +1,29 @@
 package com.working4enjoyment.decidecabina;
 
+<<<<<<< HEAD
+=======
+import java.io.Serializable;
+>>>>>>> CLIENTE_VOTACION_ANDROID_#4
 import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Voting {
+
+public class Voting implements Serializable {
+
 
     private Integer id;
     private String name;
     private String desc;
-    private Map<String, Map<Integer, String>> options;
     private Question question;
     private Calendar startDate;
     private Calendar endDate;
 
-    public Voting(Integer id, String name, String desc, Map<String, Map<Integer, String>> options, Question question, Calendar startDate, Calendar endDate) {
+
+    public Voting(Integer id, String name, String desc, Question question, Calendar startDate, Calendar endDate) {
         this.id = id;
         this.desc = desc;
-        this.options = options;
         this.question = question;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -33,9 +38,6 @@ public class Voting {
         return desc;
     }
 
-    public Map<String, Map<Integer, String>> getOptions() {
-        return new HashMap<String, Map<Integer, String>>(options);
-    }
 
     public String getName() {
         return name;
@@ -63,10 +65,6 @@ public class Voting {
 
     public void setDesc(String desc) {
         this.desc = desc;
-    }
-
-    public void setOptions(Map<String, Map<Integer, String>> options) {
-        this.options = options;
     }
 
     public void setQuestion(Question question) {

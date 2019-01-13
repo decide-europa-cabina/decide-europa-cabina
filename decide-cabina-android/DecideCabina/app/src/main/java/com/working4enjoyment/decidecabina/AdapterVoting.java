@@ -2,12 +2,18 @@ package com.working4enjoyment.decidecabina;
 
 import android.app.Activity;
 import android.content.Context;
+
+import android.content.Intent;
+
 import android.graphics.Typeface;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+
+import android.widget.Button;
+
 import android.widget.TextView;
 
 import java.util.Calendar;
@@ -51,6 +57,9 @@ public class AdapterVoting extends BaseAdapter {
     @Override
     public View getView(int position, View contentView, ViewGroup parent) {
         View vi = contentView;
+
+        final View vi2;
+
         String day;
         String month;
         String year;
@@ -62,7 +71,22 @@ public class AdapterVoting extends BaseAdapter {
         }
 
 
-        Voting voting = votings.get(position);
+        vi2= vi;
+
+
+        final Voting voting = votings.get(position);
+
+
+
+        vi2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(activity.getApplicationContext(), LoginActivity.class);
+                intent.putExtra("voting", voting);
+                v.getContext().startActivity(intent);
+            }
+        });
+
 
 
         TextView descripcion = (TextView) vi.findViewById(R.id.descripcion);

@@ -13,6 +13,9 @@ import android.view.View;
 import android.widget.ListView;
 
 
+
+import com.google.gson.Gson;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 
@@ -166,6 +169,7 @@ public class MainActivity extends AppCompatActivity {
             activity.findViewById(R.id.barra_progreso).setVisibility(View.GONE);
             activity.findViewById(R.id.textoCarga).setVisibility(View.GONE);
             activity.findViewById(R.id.textoInternet).setVisibility(View.VISIBLE);
+
         }
     }
 
@@ -185,8 +189,8 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         return bConectado;
-    }
 
+    }
 
 
 
@@ -213,65 +217,23 @@ public class MainActivity extends AppCompatActivity {
         // onPostExecute displays the results of the AsyncTask.
         @Override
         protected void onPostExecute(String result) {
-            JSONArray ja;
-            Voting voting;
-            Calendar startDate;
-            Calendar endDate;
-            // Log.d("Objeto", "La agenda es " +  result.split("]")[0]+"]");
+
             noVotings= false;
-            try{
-                votings= new ArrayList<Voting>();
-                ja= new JSONArray(result);
-                for(int i=0; i<ja.length(); i++) {
 
-                    startDate= Calendar.getInstance();
-                    if (ja.getJSONObject(i).getString("start_date").trim() == "null"){
-                        startDate = null;
-                    }else{
-                        startDate.set(new Integer(ja.getJSONObject(i).getString("start_date").split("-")[0]), new Integer(ja.getJSONObject(i).getString("start_date").split("-")[1])-1, new Integer(ja.getJSONObject(i).getString("start_date").split("-")[2].substring(0, 2)));
+            votings= Utility.serializeVoting(result);
 
-                    }
-
-                    endDate= Calendar.getInstance();
-                    if (ja.getJSONObject(i).getString("end_date").trim() == "null"){
-                        endDate = null;
-                    }else{
-                        endDate.set(new Integer(ja.getJSONObject(i).getString("end_date").split("-")[0]), new Integer(ja.getJSONObject(i).getString("end_date").split("-")[1])-1, new Integer(ja.getJSONObject(i).getString("end_date").split("-")[2].substring(0, 2)));
-                    }
-
-
-                    voting= new Voting(new Integer(ja.getJSONObject(i).getInt("id")),new String(ja.getJSONObject(i).getString("name")), new String(ja.getJSONObject(i).getString("desc")), null, null, startDate, endDate);
-
-                    votings.add(voting);
-
-                }
-                Log.d("Objeto", "Las votaciones son " + getVotings());
-                if(getVotings().size()==0){
-                    noVotings= true;
-                }
-
-
-                //voting= new Voting(ja[0]["id"])
-
-
-
-
-
-
-            }catch (JSONException e){
-                // e.printStackTrace();
-                //TODO Puede venir vacio por fallo aqui
+            Log.d("Objeto", "Las votaciones son " + result);
+            if(getVotings()!= null && getVotings().size()==0){
+                noVotings= true;
             }
-
-            // Ponemos lo que se hace al final
-
-            //Metemos en la lista el conjunto ordenado y vemos si es vacio, problema internet, si es 1 con 0000000 es no eventos, si no los que haya
-
+	    
+	    if(getVotings()==null){
+              	votings= new ArrayList<Voting>();
+	    }	
             //Asociamos el listview y el adapter
             creaListView(arrayAdapterGlobal, listViewGlobal);
 
             updateView();
-
 
         }
     }
