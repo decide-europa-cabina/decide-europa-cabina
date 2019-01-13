@@ -1,9 +1,8 @@
 package com.working4enjoyment.decidecabina;
 
-<<<<<<< HEAD
-=======
+
 import java.io.Serializable;
->>>>>>> CLIENTE_VOTACION_ANDROID_#4
+
 import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.HashMap;
