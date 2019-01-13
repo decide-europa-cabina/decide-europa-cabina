@@ -52,39 +52,38 @@ def generador_módulo_aleatorio_mio():
 		yield a
 		num += 1
 
+
 class testSetUp:
-	
+	#Inicialización de las variables que se van a utilizar a lo largo de la
+	#ejecución de las pruebas de cero conocimiento.
 	def __init__(self, modbits, k, semilla):
 		self.k = k
 		granPrimo = sympy.randprime(0, 1000000)
 		random.seed(semilla)
 		random.getstate()
 		self.p = sympy.prime(2^modbits + granPrimo)
-		print("p : ", self.p)
+		#print("p : ", self.p)
 		self.q = sympy.nextprime(2^modbits + granPrimo)
-		print("q : ", self.q)
-		if self.p == self.q:
-			print("Los primos son iguales. Por favor, ejecútalo de nuevo.")
+		#print("q : ", self.q)
+		#if self.p == self.q:
+			#print("Los primos son iguales. Por favor, ejecútalo de nuevo.")
 		self.n = self.p*self.q
-		print("n = "+str(self.n))
+		#print("n = "+str(self.n))
 		self.a = list(generador_módulo_aleatorio(k, self.n))
-		# self.a = list(generador_módulo_aleatorio_mio())
 		assert sum([gcd(i, self.n) for i in self.a]) == len(self.a)
-		#print(self.a)
-		#print(type(self.a))
-		#self.asq = [print(type(i)) for i in self.a]
 		self.asq = [i**(2, self.n) for i in self.a]
 		#print(asq)
 		
+#Parte del algoritmo que se encarga de verificar la integridad de las claves	
 class Alice:
 	
 	def __init__(self, n, sk):
 		self.n = n
 		self.sk = sk
-		# self.sk = np.array([179,179,179,179], dtype=np.int64)
+	
 		#self.sk = np.array([179], dtype=np.int64)
 		self.k = len(sk)
-		print("PK = "+str(self.sk))
+		#print("PK = "+str(self.sk))
 		
 	def calcula_x(self):
 		firma = [ i-1 for i in list(generador_módulo_aleatorio(1, 3))]
@@ -106,7 +105,7 @@ class Alice:
 		
 
 class Bob:
-	
+	#Entidad que verifica el correcto funcionamiento de las pruebas de cero conocimeinto
 	def __init__(self, n, vk):
 		self.n = n
 		self.vk = vk
@@ -125,7 +124,7 @@ class Bob:
 	
 	def autentificación(self, y):
 		ysq = y**(2, self.n)
-		print("y^2 valor a ser comprobado = " + str(ysq))
+		#print("y^2 valor a ser comprobado = " + str(ysq))
 		yrhs = mod(1, self.n)
 		yrhs = yrhs*self.x
 		for i in range(self.k):
@@ -135,34 +134,60 @@ class Bob:
 		else:
 			return 1
 
-class ZeroKnowledgeProofTest:
-	
+class ZeroKnowledgeProofTest():
+	resultadoFinalParaVista = []
 	def __init__(self, modbits, k, semilla, iterations):
 		zeroKnowledgeProof_generator = testSetUp(modbits, k, semilla)
 		alice = Alice(zeroKnowledgeProof_generator.n, zeroKnowledgeProof_generator.a)
 		bob = Bob(zeroKnowledgeProof_generator.n, zeroKnowledgeProof_generator.asq)
 		#Comienzo del protocolo
+		resultadoFinal = []
+		resultadoFinal.append("------------------- VARIABLES DE LAS PRUEBAS -------------------")
+		resultadoFinal.append("p: " + str(zeroKnowledgeProof_generator.p))
+		resultadoFinal.append("q: " + str(zeroKnowledgeProof_generator.q))
+		resultadoFinal.append("n: " + str(zeroKnowledgeProof_generator.n))
+		resultadoFinal.append("a: " + str(zeroKnowledgeProof_generator.a[0]))
+
+		resultadoFinal.append("------------------- INICIALIZANDO LAS PRUEBAS -------------------")
 		i = 0
 		abort = 0
 		while (i < iterations and abort == 0):
-			print("------------------- Iteración número " + str(i+1) + " ------------------")
+			#print("------------------- Iteración número " + str(i+1) + " ------------------")
+			resultadoFinal.append("------------------- Iteración número " + str(i+1) + " ------------------" )
 			x = alice.calcula_x()
 			alist = bob.elige_a(x)
 			if not alist:
-				print("x es 0, no se puede proceder. Autentificación fallida.")
+				#print("x es 0, no se puede proceder. Autentificación fallida.")
+				resultadoFinal.append("x es 0, no se puede proceder. Autentificación fallida.")
 				abort = 1
 			else:
 				y = alice.calcula_y(alist)
-				abort = bob.autentificación(y)
+				ysq = y**(2, bob.n)
+				#print("y^2 valor a ser comprobado = " + str(ysq))
+				resultadoFinal.append("y^2 valor a ser comprobado = " + str(ysq))
+
+				abort = bob.autentificación(y) 
 			if(abort == 1):
-				print("Fallo en la iteración " + str(i+1))
+				#print("Fallo en la iteración " + str(i+1))
+				resultadoFinal.append("Fallo en la iteración " + str(i+1))
 			i += 1
-		print("---------------------- FINALIZADO ------------------------")
+		#print("---------------------- FINALIZADO ------------------------")
+		resultadoFinal.append("---------------------- FINALIZADO ------------------------")
 		if abort == 0:
-			print("Autentificación satisfactoria. La prueba de Cero Conocimiento presentada por Alice es correcta.")
-			print("No se ha revelado información sobre el secreto a Bob durante el proceso.")
+			#print("Autentificación satisfactoria. La prueba de Cero Conocimiento presentada por Alice es correcta.")
+			resultadoFinal.append("Autentificación satisfactoria. La prueba de Cero Conocimiento presentada por Alice es correcta.")
+			resultadoFinal.append("No se ha revelado información sobre el secreto a Bob durante el proceso.")
+			#print("No se ha revelado información sobre el secreto a Bob durante el proceso.")
 		elif abort == 1:
-			print("¡Autentificación FALLIDA! La prueba de Cero Conocimiento presentada por Alice es INCORRECTA.")
+			#print("¡Autentificación FALLIDA! La prueba de Cero Conocimiento presentada por Alice es INCORRECTA.")
+			resultadoFinal.append("¡Autentificación FALLIDA! La prueba de Cero Conocimiento presentada por Alice es INCORRECTA.")
+		
+		self.resultadoFinalParaVista = resultadoFinal
+
+	def returnresultado(self):
+		resultadoFinal = self.resultadoFinalParaVista
+		return resultadoFinal
+
 		
 modbits = 256
 k = 40
