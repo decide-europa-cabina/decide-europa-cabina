@@ -45,6 +45,7 @@ deploy:
     on:
       branch: master
       repo: decide-europa-cabina/decide-europa-cabina
+      condition: $TRAVIS_PYTHON_VERSION = 3.7.1
 
   - provider: heroku
     api_key:
@@ -53,3 +54,7 @@ deploy:
     strategy: git
     skip_existing: true
     skip-cleanup: true
+    on:
+      branch: master
+      repo: decide-europa-cabina/decide-europa-cabina
+      condition: $TRAVIS_PYTHON_VERSION = 3.7.1
