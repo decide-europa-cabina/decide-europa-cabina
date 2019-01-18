@@ -70,7 +70,7 @@ MODULES = [
 ]
 
 
-BASEURL = 'https://decide-europa.herokuapp.com'
+BASEURL = 'https://decide-europa-cabina.herokuapp.com'
 
 
 MIDDLEWARE = [
